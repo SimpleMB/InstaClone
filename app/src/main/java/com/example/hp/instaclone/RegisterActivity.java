@@ -1,39 +1,47 @@
 package com.example.hp.instaclone;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.parse.ParseInstallation;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
-public class MainActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     private EditText edtUser, edtEmail, edtPassword;
     private Button btnReg;
+    private ProgressBar progressRegisterBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_register);
 
         ParseInstallation.getCurrentInstallation().saveInBackground();
 
-        edtUser = findViewById(R.id.edtUser);
-        edtEmail = findViewById(R.id.edtEmail);
-        edtPassword = findViewById(R.id.edtPassword);
-        btnReg = findViewById(R.id.btnReg);
+        edtUser = findViewById(R.id.edtRegisterUser);
+        edtEmail = findViewById(R.id.edtRegisterEmail);
+        edtPassword = findViewById(R.id.edtRegisterPassword);
+        btnReg = findViewById(R.id.btnRegisterReg);
+        progressRegisterBar = findViewById(R.id.progressRegisterBar);
+
+        progressRegisterBar.setVisibility(View.INVISIBLE);
 
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                btnReg.setVisibility(View.INVISIBLE);
+                progressRegisterBar.setVisibility(View.VISIBLE);
                 // Reset errors
                 edtUser.setError(null);
                 edtEmail.setError(null);
@@ -49,10 +57,14 @@ public class MainActivity extends AppCompatActivity {
                     public void done(ParseException e) {
                         if (e == null) {
                             Log.i("Dupa",edtEmail.getText().toString());
-                            Toast.makeText(MainActivity.this,"Sucessful Sign Up!" + "\n" + "Welcome " + edtUser.getText().toString() + "!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(RegisterActivity.this,"Successful Registration!" + "\n" + "Welcome " + edtUser.getText().toString() + "!", Toast.LENGTH_LONG).show();
+                            ParseUser.logOut();
+                            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                         } else {
                             ParseUser.logOut();
-                            Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                            btnReg.setVisibility(View.VISIBLE);
+                            progressRegisterBar.setVisibility(View.INVISIBLE);
                         }
                     }
                 });

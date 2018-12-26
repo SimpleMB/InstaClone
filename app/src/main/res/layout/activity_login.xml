@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity"
+    android:background="@drawable/background_start">
+
+    <ImageView
+        android:id="@+id/logoLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtLoginEmail"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingLeft="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="30dp"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/edtfield_style"
+        app:layout_constraintBottom_toTopOf="@+id/edtLoginPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/edtLoginPassword"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingLeft="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="25dp"
+        android:inputType="textPassword"
+        android:background="@drawable/edtfield_style"
+        app:layout_constraintBottom_toTopOf="@+id/btnLoginLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textLoginEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:background="@drawable/edtfiled_name_style"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Please enter your email:"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toTopOf="@+id/edtLoginEmail"
+        app:layout_constraintStart_toStartOf="@+id/edtLoginEmail" />
+
+    <TextView
+        android:id="@+id/textLoginPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:background="@drawable/edtfiled_name_style"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Please enter your password:"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toTopOf="@+id/edtLoginPassword"
+        app:layout_constraintStart_toStartOf="@+id/edtLoginPassword" />
+
+    <Button
+        android:background="@drawable/button_style"
+        android:elevation="10dp"
+        android:id="@+id/btnLoginLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="25dp"
+        android:text="Login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressLoginBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnLoginLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnLoginLogin" />
+
+
+</android.support.constraint.ConstraintLayout>
