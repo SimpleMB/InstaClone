@@ -5,6 +5,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.example.hp.instaclone.Fragment.ProfileTabFragment;
+import com.example.hp.instaclone.Fragment.UsersTabFragment;
+
 public class TabAdapter extends FragmentPagerAdapter {
 
 
@@ -39,6 +42,7 @@ public class TabAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return 3;
     }
+
 
     @Nullable
     @Override

@@ -1,4 +1,4 @@
-package com.example.hp.instaclone;
+package com.example.hp.instaclone.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.hp.instaclone.MainActivity;
+import com.example.hp.instaclone.R;
 import com.parse.GetCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseException;

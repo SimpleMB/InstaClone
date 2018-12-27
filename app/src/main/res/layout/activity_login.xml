@@ -5,7 +5,7 @@
     android:id="@+id/rootLayoutLogin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity"
+    tools:context=".Activity.RegisterActivity"
     android:background="@drawable/background_start">
 
     <ImageView
