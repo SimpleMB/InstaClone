@@ -3,7 +3,6 @@ package com.example.hp.instaclone;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Layout;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -13,7 +12,6 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.parse.ParseInstallation;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -77,9 +75,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
             //Closing the keyboard on clicking the layout
             case R.id.rootLayoutRegister: {
-                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
-                return;
+
+                //Try will prevent crashes if layout is clicked and keyboard was not opened.
+
+                try {
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                    return;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
             //Registering user on clicking the btnReg

@@ -1,5 +1,6 @@
 package com.example.hp.instaclone;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -33,7 +34,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         // Checking if user is logged on. If yes then logOut()
 
         if (ParseUser.getCurrentUser() != null) {
-            ParseUser.logOut();
+            startMainActivity();
         }
 
         edtEmail            = findViewById(R.id.edtLoginEmail);
@@ -71,9 +72,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             //Closing the keyboard on clicking the layout
             case R.id.rootLayoutLogin: {
-                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-                return;
+
+                //Try will prevent crashes if layout is clicked and keyboard was not opened.
+
+                try {
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                    return;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
             //Registering user on clicking the btnReg
@@ -112,8 +120,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     if (parseUser != null) {
                                         if (parseUser.getBoolean("emailVerified")) {
                                             Toast.makeText(LoginActivity.this, "Login Sucessful" + "\n" + "Welcome, " + userName, Toast.LENGTH_LONG).show();
-                                            btnLogin.setVisibility(View.VISIBLE);
-                                            progressLoginBar.setVisibility(View.INVISIBLE);
+                                            startMainActivity();
                                         } else {
                                             ParseUser.logOut();
                                             Toast.makeText(LoginActivity.this, "Login failed" + "\n" + "Please verify your email " + userName, Toast.LENGTH_LONG).show();
@@ -137,5 +144,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             }
         }
+    }
+    private void startMainActivity() {
+
+        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
+
     }
 }
