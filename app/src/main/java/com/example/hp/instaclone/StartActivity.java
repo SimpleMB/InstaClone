@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.parse.ParseInstallation;
+
 public class StartActivity extends AppCompatActivity {
 
     private Button btnReg, btnLogin;
@@ -14,6 +16,9 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+        setTitle("Welcome");
+
+        ParseInstallation.getCurrentInstallation().saveInBackground();
 
         btnReg      = findViewById(R.id.btnStartReg);
         btnLogin    = findViewById(R.id.btnStartLogin);
