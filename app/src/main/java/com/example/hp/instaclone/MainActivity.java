@@ -5,13 +5,17 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import com.example.hp.instaclone.TabAdapter;
+
+import com.example.hp.instaclone.Fragment.ProfileTabFragment;
+import com.example.hp.instaclone.Fragment.SharePhotoTabFragment;
+import com.example.hp.instaclone.Fragment.UsersTabFragment;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private Toolbar toolbar;
-    private TabAdapter tabAdapter;
+    private SecondAdapter tabAdapter;
     private TabLayout tabLayout;
 
     @Override
@@ -24,11 +28,19 @@ public class MainActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewPager);
         toolbar = findViewById(R.id.myToolbar);
         tabLayout = findViewById(R.id.tabLayout);
-        tabAdapter = new TabAdapter(getSupportFragmentManager());
+        tabAdapter = new SecondAdapter(getSupportFragmentManager());
+
+        tabAdapter.addFragment(new ProfileTabFragment(), "");
+        tabAdapter.addFragment(new UsersTabFragment(), "");
+        tabAdapter.addFragment(new SharePhotoTabFragment(), "");
 
         setSupportActionBar(toolbar);
         viewPager.setAdapter(tabAdapter);
         tabLayout.setupWithViewPager(viewPager, true);
+
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_group);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_group);
+        tabLayout.getTabAt(2).setIcon(R.drawable.ic_group);
 
     }
 }
