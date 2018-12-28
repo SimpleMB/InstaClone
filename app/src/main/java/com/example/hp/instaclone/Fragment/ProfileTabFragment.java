@@ -20,9 +20,9 @@ import com.parse.SaveCallback;
 
 public class ProfileTabFragment extends Fragment {
 
-    EditText edtUsername, edtBio, edtProfession, edtSports;
-    Button btnUpdate;
-    ParseUser parseUser;
+    private EditText edtUsername, edtBio, edtProfession, edtSports;
+    private Button btnUpdate;
+    private ParseUser parseUser;
 
     public ProfileTabFragment() {
         // Required empty public constructor
@@ -105,7 +105,7 @@ public class ProfileTabFragment extends Fragment {
                     Toast.makeText(getContext(),"Update successfull!",Toast.LENGTH_SHORT).show();
                 } else {
 
-                    Toast.makeText(getContext(),e.getMessage(), Toast.LENGTH_LONG);
+                    Toast.makeText(getContext(),e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
         });
