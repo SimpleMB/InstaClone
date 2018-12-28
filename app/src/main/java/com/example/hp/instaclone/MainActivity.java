@@ -30,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tabLayout);
         tabAdapter = new SecondAdapter(getSupportFragmentManager());
 
-        tabAdapter.addFragment(new ProfileTabFragment(), "");
-        tabAdapter.addFragment(new UsersTabFragment(), "");
-        tabAdapter.addFragment(new SharePhotoTabFragment(), "");
+        tabAdapter.addFragment(new ProfileTabFragment(), "Profile");
+        tabAdapter.addFragment(new UsersTabFragment(), "Users");
+        tabAdapter.addFragment(new SharePhotoTabFragment(), "Photos");
 
         setSupportActionBar(toolbar);
         viewPager.setAdapter(tabAdapter);
