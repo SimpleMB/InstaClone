@@ -120,6 +120,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                 Toast.makeText(RegisterActivity.this, "Successful Registration!" + "\n" + "Welcome " + edtUser.getText().toString() + "!", Toast.LENGTH_LONG).show();
                                 ParseUser.logOut();
                                 startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                finish();
                             } else {
                                 ParseUser.logOut();
                                 Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();

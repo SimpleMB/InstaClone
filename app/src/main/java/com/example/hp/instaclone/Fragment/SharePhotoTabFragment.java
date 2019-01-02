@@ -23,6 +23,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.hp.instaclone.Activity.StartActivity;
 import com.example.hp.instaclone.R;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -40,6 +41,7 @@ public class SharePhotoTabFragment extends Fragment implements View.OnClickListe
     EditText edtPhotoName;
     Button btnPhotoUpload;
     Bitmap receivedImageBitmap;
+
 
     public SharePhotoTabFragment() {
         // Required empty public constructor
@@ -59,6 +61,13 @@ public class SharePhotoTabFragment extends Fragment implements View.OnClickListe
 
         imgPhotoView.setOnClickListener(SharePhotoTabFragment.this);
         btnPhotoUpload.setOnClickListener(SharePhotoTabFragment.this);
+
+        //Checking if we have logged user.
+
+        ParseUser parseUser = ParseUser.getCurrentUser();
+        if (parseUser == null) {
+            startActivity(new Intent(getContext(), StartActivity.class));
+        }
 
 
 
@@ -85,11 +94,11 @@ public class SharePhotoTabFragment extends Fragment implements View.OnClickListe
                 // Check if we have image selected in gallery
                 if (receivedImageBitmap != null) {
 
-                    // Check if we have name of the image in EditText field. If NO then:
+                    // Check if we have description of the image in EditText field. If NO then:
 
                     if (edtPhotoName.getText().toString().equals("")) {
 
-                        Toast.makeText(getContext(), "Image name not selected", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "Please provide image description", Toast.LENGTH_LONG).show();
 
                     } else {
                         //If yes then:

@@ -1,6 +1,7 @@
 package com.example.hp.instaclone.Fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
+import com.example.hp.instaclone.Activity.StartActivity;
 import com.example.hp.instaclone.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -49,6 +51,11 @@ public class UsersTabFragment extends Fragment {
         // Ini progressbar to appear before we load data from query
         barUsersProgressBar = view.findViewById(R.id.barUsersProgressBar);
         barUsersProgressBar.setVisibility(View.VISIBLE);
+
+        ParseUser parseUser = ParseUser.getCurrentUser();
+        if (parseUser == null) {
+            startActivity(new Intent(getContext(), StartActivity.class));
+        }
 
 
         // Creating list of users that we get from ParseQuery
